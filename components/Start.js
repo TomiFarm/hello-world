@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, View, Text, Button, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform  } from "react-native";
 import { useState } from "react";
 
 const Start = ({ navigation }) => {
@@ -41,6 +41,7 @@ const Start = ({ navigation }) => {
                         </View>
                     </View>
                 </View>
+                {Platform.OS === "ios"?<KeyboardAvoidingView behavior="padding" />: null}
             </ImageBackground>
         </View>
     );
