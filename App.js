@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
 import { useState } from 'react';
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore} from 'firebase/firestore';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -12,6 +15,22 @@ import Chat from './components/Chat';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+
+    // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBrUw4X3DkHBPeiCmgbWTdz8Cg5rwzOi3c",
+    authDomain: "hello-world-f2462.firebaseapp.com",
+    projectId: "hello-world-f2462",
+    storageBucket: "hello-world-f2462.appspot.com",
+    messagingSenderId: "576904109475",
+    appId: "1:576904109475:web:100cbf16ec474163fdce16"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore(app);
 
   return (
     <NavigationContainer>
@@ -25,8 +44,9 @@ const App = () => {
         />
         <Stack.Screen
           name='Chat'
-          component={Chat}
-        />
+        >
+          {props => <Chat db={db} {...props} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
