@@ -1,6 +1,12 @@
 Hello World App
 
-Hello World App is a simple chat app created using React Native
+Hello World App is a simple chat app created using React Native. The user can enter a chat room, choose a background color for the chat room, send messages, images and location.
+
+Instructions to use app:
+- clone the repository to your local computer
+- install dependencies by running npm install
+- start the app by running npm start
+- run the app in ios or android simulator or on phone using Expo Go
 
 User Stories:
 ● As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
