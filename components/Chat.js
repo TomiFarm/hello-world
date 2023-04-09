@@ -58,14 +58,18 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
         setMessages(JSON.parse(cachedMessages));
     };
 
-    const onSend = async (newMessages) => {
-        const newMessagesRef = await addDoc(collection(db, 'messages'), newMessages[0]);
-        if(newMessagesRef.id){
-            setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages));
-        }else{
-            Alert.alert('Unable to send message, try again later');
-        }
+    const onSend = (newMessages) => {
+        addDoc(collection(db, 'messages'), newMessages[0]);
     };
+
+    // const onSend = async (newMessages) => {
+    //     const newMessagesRef = await addDoc(collection(db, 'messages'), newMessages[0]);
+    //     if(newMessagesRef.id){
+    //         setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages));
+    //     }else{
+    //         Alert.alert('Unable to send message, try again later');
+    //     }
+    // };
 
     const renderBubble = (props) => {
         return <Bubble
